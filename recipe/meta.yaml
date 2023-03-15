@@ -11,29 +11,37 @@ source:
 
 build:
   number: 0
-  noarch: python
   script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
-    - python >=3
+    - python
     - pip
     - setuptools
+    - wheel
   run:
-    - python >=3
+    - python
 
 test:
   imports:
     - simpervisor
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: https://github.com/yuvipanda/simpervisor
   license: BSD-3-Clause
+  license_family: BSD
   # Vendoring the license file until the packages include it.
   # xref: https://github.com/yuvipanda/simpervisor/pull/5
   license_file: LICENSE
   summary: Simple async process supervisor
+  description: |
+    simpervisor provides the SupervisedProcess class that provides async methods start, ready, terminate, and kill to manage it.
   dev_url: https://github.com/yuvipanda/simpervisor
+  doc_url: https://github.com/yuvipanda/simpervisor
 
 extra:
   recipe-maintainers:
